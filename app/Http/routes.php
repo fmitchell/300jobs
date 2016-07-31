@@ -17,13 +17,13 @@ Route::group(
     ['middleware' => ['web']], function () {
         Route::get(
             '/', function () {
-                return 'Employee Directory Laravel';
+                return '300 Jobs';
             }
         );
         Route::post(
-            '/directory/search/',
-            ['uses' => 'DirectoryController@search',
-            'as' => 'directory.search']
+            '/job/search/',
+            ['uses' => 'JobsController@search',
+            'as' => 'jobs.search']
         );
     }
 );

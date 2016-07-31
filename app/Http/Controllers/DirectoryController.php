@@ -49,16 +49,16 @@ class DirectoryController extends Controller
     {
         $twiml = new Services_Twilio_Twiml;
         $employee = $query->first();
-            $twiml->message(
-                collect(
-                    [$employee->full_name, $employee->phone_number,
-                    $employee->email]
-                )->implode("\n")
-            );
+        $twiml->message(
+            collect(
+                [$employee->full_name, $employee->phone_number,
+                $employee->email, [$employee->image_url]]
+            )->implode("\n")
+        );
             return $this->_xmlResponse($twiml);
     }
 
-    private function _multipleResults($query, $request)
+    private function _multipleResults($query, Request $request)
     {
         $twiml = new Services_Twilio_Twiml;
         $employees = $query->get();
